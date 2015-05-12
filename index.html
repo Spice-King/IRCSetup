@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IRC Setup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+  body {
+    background-color: #d3d6d9;
+    color: #636c75;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+    font-family: Helvetica, Arial, sans-sefif;
+  }
+  h1 {
+    margin: 8px 0;
+    padding: 0;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  </style>
+</head>
+<body>
+<div>
+  <div>
+    <h1>How to set on IRC chat</h1>
+    <p>Just a quick primer on how to get on our new IRC channel on EsperNet.</p>
+  </div>
+  <div>
+    <h2>Get an IRC client</h2>
+    <p>
+      There are a handful of IRC clients available. I recommend <code><a href="https://hexchat.github.io/">HexChat</a></code> as it runs on Windows, Linux and now Mac OS X 10.9. You can also use <code>Trillian</code> or <code>mIRC</code> if you want, but I will focus on HexChat as that is what I can use.
+    </p>
+    <p>
+      Grab the version of your IRC client of choice and install it. For HexChat I recommend also grabbing the <code>Dictionaries for spell checking</code> and install that too. At least with HexChat, you can also grab themes and plugins for your IRC client, though I will not cover them.
+    </p>
+  </div>
+  <div>
+    <h2>Setup IRC your client</h2>
+    <p>
+      Start your chosen IRC client. On standalone (not Trillian) IRC clients, you will get a network list that looks something like this:
+    </p>
+    <img src="./images/network_list.png" />
+    <p>Change the user information to what you want to show. Second and third choice as used when someone (or your ghost) is using your Nick name. The user name option will show up if Ident can't find what user account on your system you are using. It's something that is used to just ban a bad user on a shared computer and not the whole computer.</p>
+    <p>
+      Now find EsperNet in the Network list. You may need to edit EsperNet to fix something about a self signed certificate, if so check off <code>Accept Invalid SSL certificates</code> in side the EsperNet's settings. You will later come back to this settings page to add <code>autojoin channels</code> and setting up your <code>NickServ password</code> to auto identity for you.
+    </p>
+    <img src="./images/network_config.png" />
+  </div>
+  <div>
+    <h2>Register with NickServ</h2>
+    <p>
+      Back in the dawn of IRC, there was no way to prevent someone from taking your Nick while you were not connected to IRC. As a result, NickServ was created. NickServ is a bot that is often hardwired into the IRC server and the NickServ nick is reserved internally for the bot.
+    </p>
+    <p>
+      NickServ's job is to provide a method of authentication and enforcement for a nickname. For example, you can't take <code>HAL_9000</code> right now, no one can use it other than <code>HAL</code> or I as it has been reserved under NickServ. First, you can't join <code>#Vosa</code> with it and second, NickServ will boot you off in 30 seconds.
+    </p>
+    <code>
+      <p>-NickServ- This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify &lt;password&gt;.</p>
+      <p>-NickServ- You have 30 seconds to identify to your nickname before it is changed.</p>
+    </code>
+    <p>
+      In order to register with NickServ, type the following <code>/msg NickServ register &lt;password&gt; &lt;email address&gt;</code>. You will need to use a real active email address as a validation code will be sent to it. The email will say to run a command that looks something like <code>/msg NickServ VERIFY REGISTER &lt;nick&gt; &lt;slug&gt;</code>. After this you are registering with NickServ, though there are settings you can change later, like booting other people off your nick.
+    </p>
+  </div>
+  <div>
+    <h2>Poke Spice_King or BlazeFaia</h2>
+    <p>
+      There are a number of restrictions on our channel <code>#Vosa</code>. First you must be registered and identified. Second you must be invited into <code>#Vosa</code> or be placed on the Invite Exemption list (the command is <code>/mode #Vosa +I &lt;nick&gt;</code>). This keeps other people out for us, even if they manage to find <code>#Vosa</code> as it does not show up on the channel list.
+    </p>
+  </div>
+  <div>
+    <h2>Finishing setting up your IRC client</h2>
+    <p>
+      Time to go back into your settings for EsperNet. I'm sure you don't want to always need to type <code>/msg NickServ identify &lt;your password&gt;</code> and <code>/join #Vosa</code> every time you open your client.
+    </p>
+    <img src="./images/network_autojoin.png" />
+    <p>
+      First let's do your login. Like the in the above image <code>SASL (username + password)</code> is the best login method. <code>SASL EXTERNAL (cert)</code> is should better, but it is much harder to set up. Just plunk down your NickServ password into the password box after picking <code>SASL</code>.
+    </p>
+    <p>
+      To setup autojoin, just click <code>Autojoin channels</code> open the tab for it and click Add. Enter <code>#Vosa</code> for the channel name, there is no Key/channel password.
+    </p>
+  </div>
+  <div>
+    <h2>Optional NickServ stuff</h2>
+    <p>
+      There are a few extra things that you could do with NickServ. Use <code>/msg NickServ help</code> pf a listing of commands.
+    </p>
+    <p>
+      A few useful commands to get started with are <code>/msg NickServ set enforce on</code> and <code>/msg NickServ set emailmemos on</code>. Setting <code>enforce</code> to on will tell NickServ to boot people off your nick if they fail to identify as you. Setting <code>emailmemos</code> to on will send any memos you get via MemoServ to your email.
+    </p>
+    <p>
+      There are more options, so feel free to poke around.
+    </p>
+  </div>
+  <div>
+    <h2>Customizing your IRC client</h2>
+    <p>
+      Most dedicated IRC clients offer plugin systems and extensive customization. Some plugins offer shortcut commands or more complex commands.
+    </p>
+    <code>
+      <p>/slap HAL</p>
+      <p>* Spice_King slaps HAL in da face with a large trout</p>
+    </code>
+    <p>
+      The above is a simple slap command, written in Python for HexChat.
+    </p>
+    <code>
+      <p>/sysinfo</p>
+      <p>&lt;Spice_King&gt;  HexChat: 2.11.0 ** OS: Linux 3.13.0-39-generic x86_64 ** Distro: Ubuntu "trusty" 14.04 ** CPU: 4 x Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz (GenuineIntel) @ 1.47GHz ** RAM: Physical: 5.5GiB, 42.0% free ** Disk: Total: 419.1GiB, 27.6% free ** VGA: Intel Corporation Core Processor Integrated Graphics Controller ** Sound: HDA-Intel - HDA Intel MID ** Ethernet: Qualcomm Atheros AR8152 v2.0 Fast Ethernet ** Uptime: 3d 15h 16m 17s **</p>
+    </code>
+    <p>A more complex plugin called SysInfo form HexChat. Kind of handy if you need support for the PC you are on.</p>
+    <p>There are plugins and customizations for all kinds of things, my only request is to not abuse them.</p>
+  </div>
+</div>
+</body>
+</html>
